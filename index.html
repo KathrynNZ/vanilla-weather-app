@@ -36,10 +36,10 @@
       <h1 id="current-city"> Wellington </h1>
     </div>
     <div class="col-6">
-      <h5 id="current-day"> Monday </h5>
+      <h5 id="current-day" class="current-day-time"> Monday </h5>
       <div class="row">
         <div class="col-6">
-          <h5 id="current-time"> 10:51am </h5>
+          <h5 id="current-time" class="current-day-time"> 10:51am </h5>
         </div>
       </div>
     </div>
@@ -47,10 +47,10 @@
 
   
   <ul>
-   <li>
+   <li id="weather-description">
      Weather description: clear skies
    </li>
-   <li>
+   <li id="humidity-wind">
      Humidity: 67%, Wind: 3km/h
    </li>
   </ul>
@@ -60,17 +60,17 @@
 <div class="row clearfix">
   <div class="col-4">
     <div class="card border-0 bg-transparent text-center p-3">
-      <blockquote class="blockquote mb-0 current-weather-img">
+      <blockquote class="blockquote mb-0">
        <p>
-        <img src="src/partly_cloudy.png" alt="partly cloudy" id="current-weather-img">
+        <img src="" alt="" id="current-weather-img">
        </p>
       </blockquote>
     </div>
   </div>
   <div class="col-4">
     <div class="card border-0 bg-transparent text-center p-3">
-      <blockquote class="blockquote mb-0 current-temp">
-        <p>
+      <blockquote class="blockquote mb-0">
+        <p id="current-temp-display">
           <span id="current-temperature">23</span><span class="current-units"><span id="current-degrees-celsius">°C</span> | <span id="current-degrees-fahrenheit">°F</span></span>
         </p>
       </blockquote>
@@ -79,9 +79,9 @@
   <div class="col-4">
     <div class="card border-0 bg-transparent text-center p-3">
       <blockquote class="blockquote mb-0">
-        <p>
-          <span id="current-temp-high">25</span><span class="units-high-low"><span id="degrees-high-celsius">°C</span> | <span id="degrees-high-fahrenheit">°F</span></span> <br /> 
-          <span id="current-temp-low">12</span><span class="units-high-low"><span id="degrees-low-celsius">°C</span> | <span id="degrees-low-fahrenheit">°F</span></span>
+        <p id="current-high-low-display">
+          <span id="current-temp-high">25</span><span class="units-high"><span id="degrees-high-celsius">°C</span> | <span id="degrees-high-fahrenheit">°F</span></span> <br /> 
+          <span id="current-temp-low">12</span><span class="units-low"><span id="degrees-low-celsius">°C</span> | <span id="degrees-low-fahrenheit">°F</span></span>
         </p>
       </blockquote>
     </div>
@@ -102,6 +102,7 @@
    </div>
   </div>
   
+  <script src="src/app.js"></script>
 
 
 </body>
