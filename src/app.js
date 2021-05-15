@@ -31,6 +31,8 @@ function showTemperature(response) {
  document.querySelector("#weather-description").innerHTML = response.data.weather[0].main;
  document.querySelector("#humidity-wind").innerHTML = `Humidity: ${Math.round(response.data.main.humidity)}%, Wind: ${Math.round(response.data.wind.speed)} m/s`;
 
+ celsiusTemperature = response.data.main.temp;
+
  let icon = response.data.weather[0].icon;
 
  document.querySelector("#current-weather-img").setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
@@ -73,5 +75,31 @@ function formatDate(timestamp) {
     currentTime.innerHTML = `${hours}:${minutes} pm`;
    }
   }
+
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let currentTemperature = document.querySelector("#current-temperature");
+  let fahrenheitTemperature = celsiusTemperature * 1.8 + 32;
+  currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let currentTemperature = document.querySelector("#current-temperature");
+  currentTemperature.innerHTML = Math.round(celsiusTemperature);
+}
+
+  let celsiusTemperature = null;
+
+  let fahrenheitLink = document.querySelector("#fahrenheit-link");
+  fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+
+  let celsiusLink = document.querySelector("#celsius-link");
+  celsiusLink.addEventListener("click", showCelsiusTemperature);
+
 
   search("New York");
