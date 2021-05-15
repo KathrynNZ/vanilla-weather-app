@@ -16,15 +16,19 @@ h5 {
 ul {
   padding: 0;
   list-style: none;
+  margin-bottom: 0;
 }
 
 li {
   font-size: 18px;
 }
 
-.weather-app {
+.weather-app-wrapper {
   max-width: 600px;
   margin: auto;
+}
+
+.weather-app {
   margin-top: 40px;
   padding: 30px 15px;
   background-image: linear-gradient(
