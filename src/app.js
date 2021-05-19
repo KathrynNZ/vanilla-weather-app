@@ -19,6 +19,41 @@ function handleSubmit(event) {
   cityForm.addEventListener("submit", handleSubmit)
 
 
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = "";
+  let days = ["Thursday", "Friday", "Saturday", "Sunday"];
+  days.forEach(function (day) {
+
+  forecastHTML = forecastHTML + `
+   <div class="card">
+    <div class="card-body">
+     <div class="row">
+      <div class="col-5 forecast-day">
+        ${day}
+      </div>
+
+      <div class="col-3 forecast-img">
+        <i class="fas fa-sun"></i>
+      </div>
+
+      <div class="col-2 forecast-high">
+        22°c
+      </div>
+
+      <div class="col-2 forecast-low">
+        14°c
+      </div>
+    </div>
+  </div>
+ </div>
+  `;
+  });
+ forecastElement.innerHTML = forecastHTML;
+}
+
+
 
 function showTemperature(response) {
  document.querySelector("#current-city").innerHTML = response.data.name;
@@ -103,3 +138,4 @@ function showCelsiusTemperature(event) {
 
 
   search("New York");
+  showForecast();
