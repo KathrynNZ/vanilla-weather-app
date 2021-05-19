@@ -18,8 +18,15 @@ function handleSubmit(event) {
   let cityForm = document.querySelector("#search-city-form");
   cityForm.addEventListener("submit", handleSubmit)
 
+function getForecast(coordinates) {
+  let apiKey = "5238f8c1d406c12784c08d3c68d9a8e7";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
+}
 
-function showForecast() {
+
+function showForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = "";
@@ -73,10 +80,9 @@ function showTemperature(response) {
  document.querySelector("#current-weather-img").setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
  document.querySelector("#current-weather-img").setAttribute("alt", response.data.weather[0].description);
 
- 
-
  formatDate(response.data.dt * 1000);
 
+ getForecast(response.data.coord);
 }
 
 
@@ -138,4 +144,3 @@ function showCelsiusTemperature(event) {
 
 
   search("New York");
-  showForecast();
