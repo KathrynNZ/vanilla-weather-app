@@ -103,13 +103,3 @@ li {
   position: relative;
   bottom: 3px;
 }
-
-.active {
-  color: #000;
-  cursor: default;
-  text-decoration: none;
-}
-
-.active:hover {
-  color: #000;
-}

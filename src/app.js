@@ -15,8 +15,6 @@ function handleSubmit(event) {
   search(city);
 }
 
-  let cityForm = document.querySelector("#search-city-form");
-  cityForm.addEventListener("submit", handleSubmit)
 
 function getForecast(coordinates) {
   let apiKey = "5238f8c1d406c12784c08d3c68d9a8e7";
@@ -31,8 +29,8 @@ function formatForecastDays(timestamp) {
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
   return days[day];
-
 }
+
 
 function showForecast(response) {
   let forecast = response.data.daily;
@@ -68,9 +66,9 @@ function showForecast(response) {
   `;
     }
   });
+
  forecastElement.innerHTML = forecastHTML;
 }
-
 
 
 function showTemperature(response) {
@@ -83,8 +81,6 @@ function showTemperature(response) {
 
  document.querySelector("#weather-description").innerHTML = response.data.weather[0].main;
  document.querySelector("#humidity-wind").innerHTML = `Humidity: ${Math.round(response.data.main.humidity)}%, Wind: ${Math.round(response.data.wind.speed)} m/s`;
-
- celsiusTemperature = response.data.main.temp;
 
  let icon = response.data.weather[0].icon;
 
@@ -113,13 +109,11 @@ function formatDate(timestamp) {
     minutes = `0${minutes}`;
   }
 
-
   let currentDay = document.querySelector("#current-day");
   let currentTime = document.querySelector("#current-time");
 
   currentDay.innerHTML = `${today}`;
   currentTime.innerHTML = `${hours}:${minutes}`;
-
 
   if(hours <=11) {
     currentTime.innerHTML = `${hours}:${minutes} am`;
@@ -128,30 +122,9 @@ function formatDate(timestamp) {
    }
   }
 
-function showFahrenheitTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let currentTemperature = document.querySelector("#current-temperature");
-  let fahrenheitTemperature = celsiusTemperature * 1.8 + 32;
-  currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
-}
 
-function showCelsiusTemperature(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let currentTemperature = document.querySelector("#current-temperature");
-  currentTemperature.innerHTML = Math.round(celsiusTemperature);
-}
+  let cityForm = document.querySelector("#search-city-form");
+  cityForm.addEventListener("submit", handleSubmit)
 
-  let celsiusTemperature = null;
-
-  let fahrenheitLink = document.querySelector("#fahrenheit-link");
-  fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
-
-  let celsiusLink = document.querySelector("#celsius-link");
-  celsiusLink.addEventListener("click", showCelsiusTemperature);
-
-
+  
   search("New York");
