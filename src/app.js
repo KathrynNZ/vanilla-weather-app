@@ -25,37 +25,48 @@ function getForecast(coordinates) {
 }
 
 
+function formatForecastDays(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  return days[day];
+
+}
+
 function showForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = "";
-  let days = ["Thursday", "Friday", "Saturday", "Sunday"];
-  days.forEach(function (day) {
+  
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
 
   forecastHTML = forecastHTML + `
    <div class="card">
     <div class="card-body">
      <div class="row">
       <div class="col-5 forecast-day">
-        ${day}
+        ${formatForecastDays(forecastDay.dt)}
       </div>
 
       <div class="col-3 forecast-img">
-        <i class="fas fa-sun"></i>
+       <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" />
       </div>
 
       <div class="col-2 forecast-high">
-        22°c
+        ${Math.round(forecastDay.temp.max)}°c
       </div>
 
       <div class="col-2 forecast-low">
-        14°c
+        ${Math.round(forecastDay.temp.min)}°c
       </div>
     </div>
   </div>
  </div>
   `;
+    }
   });
  forecastElement.innerHTML = forecastHTML;
 }
