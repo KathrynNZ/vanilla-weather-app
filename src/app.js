@@ -45,11 +45,11 @@ function showForecast(response) {
    <div class="card">
     <div class="card-body">
      <div class="row">
-      <div class="col-5 forecast-day">
+      <div class="col-4 forecast-day">
         ${formatForecastDays(forecastDay.dt)}
       </div>
 
-      <div class="col-3 forecast-img">
+      <div class="col-4 forecast-img">
        <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" />
       </div>
 
@@ -126,5 +126,5 @@ function formatDate(timestamp) {
   let cityForm = document.querySelector("#search-city-form");
   cityForm.addEventListener("submit", handleSubmit)
 
-  
+
   search("New York");

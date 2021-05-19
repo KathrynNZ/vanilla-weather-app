@@ -103,3 +103,31 @@ li {
   position: relative;
   bottom: 3px;
 }
+
+#forecast {
+  margin-top: 90px;
+}
+
+.card {
+  max-height: 84px;
+}
+
+.forecast-day {
+  font-weight: bolder;
+  line-height: 24px;
+}
+
+.forecast-img {
+  position: relative;
+  top: -25px;
+}
+
+.forecast-high {
+  color: red;
+  font-weight: bold;
+}
+
+.forecast-low {
+  color: blue;
+  font-weight: thin;
+}
